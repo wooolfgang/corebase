@@ -1,13 +1,12 @@
 import 'tailwindcss/tailwind.css'
 
-type Props = {
+type Properties = {
   Component: any
   pageProps: any
 }
 
-function App({ Component, pageProps }: Props) {
-    return <Component {...pageProps} />
+function App({ Component, pageProps }: Properties) {
+  return <Component {...pageProps} />
 }
-
 
 export default App

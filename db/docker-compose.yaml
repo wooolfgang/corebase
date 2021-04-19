@@ -1,12 +1,12 @@
-version: "3.8"
+version: '3.8'
 services:
   db:
-    image: "postgres:12"
+    image: 'postgres:12'
     ports:
-      - "54320:5432"
-    volumes: 
+      - '54320:5432'
+    volumes:
       - ./pgdata:/var/lib/postgresql/data
-    environment: 
+    environment:
       - POSTGRES_USER=bob
       - POSTGRES_PASSWORD=ross
       - POSTGRES_DB=happylittletrees

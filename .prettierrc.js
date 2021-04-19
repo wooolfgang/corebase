@@ -8,4 +8,4 @@ module.exports = {
   useTabs: false,
   singleQuote: true,
   bracketSpacing: true
-};
+}

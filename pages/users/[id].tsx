@@ -5,12 +5,12 @@ import { sampleUserData } from '../../utils/sample-data'
 import Layout from '../../components/Layout'
 import ListDetail from '../../components/ListDetail'
 
-type Props = {
+type Properties = {
   item?: User
   errors?: string
 }
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const StaticPropertiesDetail = ({ item, errors }: Properties) => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
@@ -32,12 +32,12 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   )
 }
 
-export default StaticPropsDetail
+export default StaticPropertiesDetail
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
-    params: { id: user.id.toString() },
+  const paths = sampleUserData.map(user => ({
+    params: { id: user.id.toString() }
   }))
 
   // We'll pre-render only these paths at build time.
@@ -51,11 +51,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id
-    const item = sampleUserData.find((data) => data.id === Number(id))
+    const item = sampleUserData.find(data => data.id === Number(id))
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } }
-  } catch (err) {
-    return { props: { errors: err.message } }
+  } catch (error) {
+    return { props: { errors: error.message } }
   }
 }

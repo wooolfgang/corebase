@@ -2,12 +2,15 @@ import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
-type Props = {
+type Properties = {
   children?: ReactNode
   title?: string
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
+const Layout = ({
+  children,
+  title = 'This is the default title'
+}: Properties) => (
   <div>
     <Head>
       <title>{title}</title>
