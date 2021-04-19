@@ -11,6 +11,7 @@
   * https://dev.to/prisma/complete-introduction-to-fullstack-type-safe-graphql-feat-next-js-nexus-prisma-c5
   * https://medium.com/dooboolab/how-to-set-up-a-graphql-server-with-apollo-server-prisma2-and-nexus-schema-f59aa23b5d5d 
   * https://zach.codes/nexus-prisma-is-the-future-of-backend/ 
+  * Adding Eslint-Prettier https://telmo.is/writing/add-prettier-and-eslint-to-your-nextjs-app 
 
   #### Prisma
   * https://github.com/catalinmiron/awesome-prisma
