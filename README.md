@@ -1,9 +1,10 @@
 ### Re-creating the template
   * npx create-next-app {project-name} --use-npm -e with-typescript
-  * 
+  * npm add nexus && npm add graphql (https://nexusjs.org/docs/#installation)
 
 ### Setting up the backend
   1. Run docker-compose up -d 
+  2. Run the initial migration: ```npx prisma migrate dev --name init --preview-feature``` 
 
 ### References:
   * https://egghead.io/lessons/postgresql-set-up-and-run-a-postgresql-instance-locally-with-docker-compose?pl=build-a-full-stack-app-with-prisma-2-7c81 
@@ -13,3 +14,4 @@
 
   #### Prisma
   * https://github.com/catalinmiron/awesome-prisma
+  * https://github.com/prisma/prisma-examples 
