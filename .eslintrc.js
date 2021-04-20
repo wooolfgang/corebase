@@ -31,6 +31,7 @@ module.exports = {
     'no-console': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'unicorn/filename-case': 'off'
+    'unicorn/filename-case': 'off',
+    'unicorn/prevent-abbreviations': 'off'
   }
 }
