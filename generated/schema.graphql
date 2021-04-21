@@ -2,11 +2,16 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  signup(email: String!, firstName: String, lastName: String): User
+}
+
 type Query {
-  user: User
+  users: [User]
 }
 
 type User {
+  email: String
   firstName: String
   id: ID
   lastName: String

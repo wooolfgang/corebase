@@ -10,12 +10,16 @@
   "dependencies": {
     "@prisma/client": "^2.21.2",
     "apollo-server-micro": "^2.23.0",
+    "final-form": "^4.20.2",
     "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
     "next": "latest",
     "nexus": "^1.0.0",
     "nexus-plugin-prisma": "^0.34.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-final-form": "^6.5.3",
+    "react-query": "^3.13.10"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",

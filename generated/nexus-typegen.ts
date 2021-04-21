@@ -7,7 +7,12 @@
 
 
 
-
+declare global {
+  interface NexusGenCustomOutputProperties<TypeName extends string> {
+    crud: NexusPrisma<TypeName, 'crud'>
+    model: NexusPrisma<TypeName, 'model'>
+  }
+}
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
@@ -28,8 +33,10 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   Query: {};
   User: { // root type
+    email?: string | null; // String
     firstName?: string | null; // String
     id?: string | null; // ID
     lastName?: string | null; // String
@@ -47,10 +54,14 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    signup: NexusGenRootTypes['User'] | null; // User
+  }
   Query: { // field return type
-    user: NexusGenRootTypes['User'] | null; // User
+    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   User: { // field return type
+    email: string | null; // String
     firstName: string | null; // String
     id: string | null; // ID
     lastName: string | null; // String
@@ -58,10 +69,14 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    signup: 'User'
+  }
   Query: { // field return type name
-    user: 'User'
+    users: 'User'
   }
   User: { // field return type name
+    email: 'String'
     firstName: 'String'
     id: 'ID'
     lastName: 'String'
@@ -69,6 +84,13 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    signup: { // args
+      email: string; // String!
+      firstName?: string | null; // String
+      lastName?: string | null; // String
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
