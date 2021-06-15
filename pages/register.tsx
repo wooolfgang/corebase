@@ -1,21 +1,21 @@
 import React from 'react'
-import Nav from 'src/app/components/Nav'
-import LoginUserForm from 'src/app/containers/LoginUserForm'
 import Layout from 'app/components/Layout'
+import Nav from 'app/components/Nav'
+import RegisterUserForm from 'app/containers/RegisterUserForm'
 
 interface Props {}
 
-const Login: React.FC<Props> = () => {
+const Register: React.FC<Props> = () => {
   return (
-    <Layout title="">
+    <Layout title="Register">
       <div className="flex items-center justify-center w-full flex-col pt-20">
         <div className="w-1/4">
           <Nav className="mb-3" />
-          <LoginUserForm className="w-full" />
+          <RegisterUserForm className="w-full" />
         </div>
       </div>
     </Layout>
   )
 }
 
-export default Login
+export default Register

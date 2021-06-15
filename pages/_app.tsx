@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css'
+import 'app/styles/globals.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { GraphqlClientProvider } from 'src/app/context/GraphqlClient'
