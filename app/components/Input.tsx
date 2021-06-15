@@ -8,7 +8,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const defaultParentClassname = `mb-2 flex flex-col`
 const defaultLabelClassname = `block text-sm mb-1 text-gray-700 font-serif`
-const defaultInputClassname = `shadow-inner font-serif border border-solid border-gray-500 rounded-sm border-0 px-2 py-1 text-base focus:outline-none focus:ring-1 focus:border-blue-800`
+const defaultInputClassname = `font-serif border border-solid border-gray-500  border-0 px-2 py-0.5 text-base focus:outline-none focus:ring-2 focus:border-blue-800`
 
 // eslint-disable-next-line react/display-name
 const Input: React.FC<Props> = React.forwardRef(

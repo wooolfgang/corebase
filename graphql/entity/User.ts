@@ -16,7 +16,7 @@ export const UserQuery = extendType({
     t.list.field('users', {
       type: 'User',
       resolve(_root, _args, ctx) {
-        return ctx.db.user.findMany()
+        return ctx.prisma.user.findMany()
       }
     })
   }
@@ -38,7 +38,7 @@ export const UserMutation = extendType({
           firstName: args.firstName,
           lastName: args.lastName
         }
-        return ctx.db.user.create({ data: user })
+        return ctx.prisma.user.create({ data: user })
       }
     })
   }

@@ -1,6 +1,9 @@
 import { ApolloServer } from 'apollo-server-micro'
-import { schema } from 'graphql/schema'
-import { context } from 'graphql/context'
+import { schema } from 'src/graphql/schema'
+import { context } from 'src/graphql/context'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const server = new ApolloServer({
   schema,
@@ -13,6 +16,16 @@ export const config = {
   }
 }
 
-export default server.createHandler({
-  path: '/api/graphql'
-})
+const next = () => {}
+
+export default async function handler(
+  req: NextApiRequest | any,
+  res: NextApiResponse | any
+) {
+  cookieParser()(req, res, next)
+  cors()(req, res, next)
+
+  await server.createHandler({
+    path: '/api/graphql'
+  })(req, res)
+}

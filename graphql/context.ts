@@ -1,10 +1,10 @@
-import { db } from './db'
+import { prisma } from './prisma'
 import { PrismaClient } from '@prisma/client'
 
 export interface Context {
-  db: PrismaClient
+  prisma: PrismaClient
 }
 
-export const context = {
-  db
+export const context: Context = {
+  prisma
 }

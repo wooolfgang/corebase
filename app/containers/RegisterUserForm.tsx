@@ -43,6 +43,9 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
       onError: (_err, _variables, previousValue): void => {
         queryClient.setQueryData('users', previousValue)
       },
+      onSuccess: () => {
+        alert('created!')
+      },
       onSettled: (): void => {
         queryClient.invalidateQueries('users')
       }
@@ -90,7 +93,7 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
           <div className="flex flex-col items-end mt-4">
             <button
               type="submit"
-              className="rounded-sm font-serif px-2 py-0.5 text-white text-base font-medium text-right border-2 bg-blue-500 border-solid border-blue-500 shadow"
+              className="font-serif px-2 py-1 text-white text-base font-medium text-right border border-solid border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
             >
               Create your account
             </button>
