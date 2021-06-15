@@ -9,7 +9,7 @@ const Register: React.FC<Props> = () => {
   return (
     <Layout title="Register">
       <div className="flex items-center justify-center w-full flex-col pt-20">
-        <div className="w-1/4">
+        <div className="w-80">
           <Nav className="mb-3" />
           <RegisterUserForm className="w-full" />
         </div>
