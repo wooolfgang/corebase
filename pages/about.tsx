@@ -1,4 +1,4 @@
-import Layout from 'components/Layout'
+import Layout from 'src/app/components/Layout'
 
 const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript Example">

@@ -23,16 +23,12 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:sonarjs/recommended',
-    'plugin:unicorn/recommended',
     'plugin:security/recommended',
     'plugin:react-hooks/recommended'
   ],
   rules: {
     'no-console': 'error',
     'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
-    'unicorn/filename-case': 'off',
-    'unicorn/prevent-abbreviations': 'off',
-    'unicorn/no-null': 'off'
+    'react/prop-types': 'off'
   }
 }

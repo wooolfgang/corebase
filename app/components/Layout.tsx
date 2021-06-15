@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
-import Nav from 'components/Nav'
+import Nav from 'src/app/components/Nav'
 
 type Properties = {
   children?: ReactNode
   title?: string
 }
 
-const Layout = ({ children, title = 'Corebase' }: Properties) => (
+const Layout = ({ children, title = '' }: Properties) => (
   <div>
     <Head>
       <title>{title}</title>

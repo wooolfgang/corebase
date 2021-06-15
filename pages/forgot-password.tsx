@@ -1,4 +1,4 @@
-import Layout from 'components/Layout'
+import Layout from 'src/app/components/Layout'
 
 const ForgotPassword = () => <Layout title="Forgot Password"></Layout>
 

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { NexusGenObjects } from 'generated/nexus-typegen'
-import Layout from 'components/Layout'
-import CreateUserForm from 'src/containers/CreateUserForm'
+import Layout from 'src/app/components/Layout'
+import CreateUserForm from 'src/app/containers/CreateUserForm'
 import { NexusGenArgTypes } from 'generated/nexus-typegen'
 import { useMutation, useQueryClient, useQuery } from 'react-query'
 import { gql } from 'graphql-request'
-import { useGraphqlClient } from 'src/context/GraphqlClient'
+import { useGraphqlClient } from 'src/app/context/GraphqlClient'
 
 const mutation = gql`
   mutation createUser($email: String!, $firstName: String, $lastName: String) {

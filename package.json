@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "db": "cd db && docker-compose up"
   },
   "dependencies": {
     "@prisma/client": "^2.21.2",
@@ -36,7 +37,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-sonarjs": "^0.6.0",
-    "eslint-plugin-unicorn": "^29.0.0",
     "postcss": "^8.2.10",
     "prettier": "^2.2.1",
     "prisma": "^2.21.2",

@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 
-import Layout from 'components/Layout'
+import Layout from 'src/app/components/Layout'
 
 const UserPage = () => {
   return <Layout></Layout>

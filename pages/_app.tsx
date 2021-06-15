@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { GraphqlClientProvider } from 'context/GraphqlClient'
+import { GraphqlClientProvider } from 'src/app/context/GraphqlClient'
 import { GraphQLClient } from 'graphql-request'
 
 type Properties = {
