@@ -4,7 +4,8 @@
  */
 
 
-import { Context } from "./../graphql/context"
+import { Context } from "./../server/context"
+import { FieldAuthorizeResolver } from "nexus/dist/plugins/fieldAuthorizePlugin"
 
 
 declare global {
@@ -33,6 +34,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AuthRes: { // root type
+    accessToken?: string | null; // String
+    email?: string | null; // String
+    id?: string | null; // String
+  }
   Mutation: {};
   Query: {};
   User: { // root type
@@ -54,8 +60,14 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  AuthRes: { // field return type
+    accessToken: string | null; // String
+    email: string | null; // String
+    id: string | null; // String
+  }
   Mutation: { // field return type
-    signup: NexusGenRootTypes['User'] | null; // User
+    login: NexusGenRootTypes['AuthRes'] | null; // AuthRes
+    signup: NexusGenRootTypes['AuthRes'] | null; // AuthRes
   }
   Query: { // field return type
     users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
@@ -69,8 +81,14 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  AuthRes: { // field return type name
+    accessToken: 'String'
+    email: 'String'
+    id: 'String'
+  }
   Mutation: { // field return type name
-    signup: 'User'
+    login: 'AuthRes'
+    signup: 'AuthRes'
   }
   Query: { // field return type name
     users: 'User'
@@ -85,10 +103,15 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    login: { // args
+      email: string; // String!
+      password: string; // String!
+    }
     signup: { // args
       email: string; // String!
       firstName?: string | null; // String
       lastName?: string | null; // String
+      password: string; // String!
     }
   }
 }
@@ -154,6 +177,15 @@ declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
+    /**
+     * Authorization for an individual field. Returning "true"
+     * or "Promise<true>" means the field can be accessed.
+     * Returning "false" or "Promise<false>" will respond
+     * with a "Not Authorized" error for the field.
+     * Returning or throwing an error will also prevent the
+     * resolver from executing.
+     */
+    authorize?: FieldAuthorizeResolver<TypeName, FieldName>
   }
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
   }

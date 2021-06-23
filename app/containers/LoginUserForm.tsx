@@ -40,7 +40,7 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
           <div className="flex flex-col items-end mt-4">
             <button
               type="submit"
-              className="font-serif px-2 py-1 text-white text-base font-medium text-right border border-solid border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
+              className="font-serif px-2 py-1 text-white text-base font-medium text-right border-b-2 border-r-2 border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
             >
               Login your account
             </button>

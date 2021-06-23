@@ -1,14 +1,7 @@
-import { ApolloServer } from 'apollo-server-micro'
-import { schema } from 'src/graphql/schema'
-import { context } from 'src/graphql/context'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-const server = new ApolloServer({
-  schema,
-  context
-})
+import { NextApiRequest, NextApiResponse } from 'next'
+import { createServer } from 'server'
 
 export const config = {
   api: {
@@ -25,6 +18,7 @@ export default async function handler(
   cookieParser()(req, res, next)
   cors()(req, res, next)
 
+  const server = createServer(req, res)
   await server.createHandler({
     path: '/api/graphql'
   })(req, res)

@@ -8,7 +8,23 @@
 1. cd db && run docker-compose up -d
 2. Run the initial migration: `npx prisma migrate dev --name init --preview-feature`
 
----
+### Running a migration
+
+`npx prisma migrate dev --name "your-migration-name" --preview-feature`
+
+### Quick start
+
+```
+  npx prisma migrate dev
+  npm run dev
+```
+
+### Viewing database models and data
+
+```
+  cd prisma
+  npx prisma studio
+```
 
 ### References:
 
@@ -27,3 +43,4 @@
 
 - https://www.youtube.com/watch?v=25GS0MLT8JU
 - https://github.com/benawad/jwt-auth-example
+- https://javascript.plainenglish.io/next-js-using-cookies-in-getserversideprops-89c03a216b0b

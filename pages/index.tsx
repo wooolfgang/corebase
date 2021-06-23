@@ -8,7 +8,7 @@ interface Props {}
 const Login: React.FC<Props> = () => {
   return (
     <Layout title="">
-      <div className="flex items-center justify-center w-full flex-col pt-20">
+      <div className="flex items-center justify-center w-full flex-col pt-32">
         <div className="w-80">
           <Nav className="mb-3" />
           <LoginUserForm className="w-full" />

@@ -2,8 +2,15 @@
 ### Do not make changes to this file directly
 
 
+type AuthRes {
+  accessToken: String
+  email: String
+  id: String
+}
+
 type Mutation {
-  signup(email: String!, firstName: String, lastName: String): User
+  login(email: String!, password: String!): AuthRes
+  signup(email: String!, firstName: String, lastName: String, password: String!): AuthRes
 }
 
 type Query {
