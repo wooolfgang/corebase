@@ -2,9 +2,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 import { verify } from 'jsonwebtoken'
+import { Context } from '../context'
+import { AccessTokenPayload } from './authTokens'
 
 export interface AuthInterface {
-  isAuthenticated: () => Promise<boolean>
+  isAuthenticated: (ctx?: Context) => Promise<boolean>
   getAccessToken: () => string | null
 }
 
@@ -13,7 +15,7 @@ function Auth(
   res: NextApiResponse,
   prisma: PrismaClient | null | undefined
 ): AuthInterface {
-  async function isAuthenticated() {
+  async function isAuthenticated(ctx?: Context) {
     const accessToken = getAccessToken()
 
     if (!accessToken) {
@@ -21,7 +23,16 @@ function Auth(
     }
 
     try {
-      await verify(accessToken, process.env.ACCESS_TOKEN_SECRET!)
+      const payload = (await verify(
+        accessToken,
+        process.env.ACCESS_TOKEN_SECRET!
+      )) as AccessTokenPayload
+
+      if (ctx) {
+        // Attach userId to context
+        ctx.userId = payload.userId
+      }
+
       return true
     } catch {
       return false

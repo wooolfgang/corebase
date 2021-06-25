@@ -8,6 +8,7 @@ export interface Context {
   req?: NextApiRequest
   res?: NextApiResponse
   auth?: AuthInterface
+  userId?: string
 }
 
 export const createContext = (

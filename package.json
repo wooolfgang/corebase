@@ -20,18 +20,22 @@
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "next": "latest",
     "nexus": "^1.0.0",
     "nexus-plugin-prisma": "^0.34.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-final-form": "^6.5.3",
-    "react-query": "^3.13.10"
+    "react-query": "^3.13.10",
+    "zustand": "^3.5.4"
   },
   "devDependencies": {
     "@types/cookie": "^0.4.0",
     "@types/cors": "^2.8.10",
+    "@types/graphql": "^14.5.0",
     "@types/jsonwebtoken": "^8.5.1",
+    "@types/jwt-decode": "^3.1.0",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",

@@ -67,9 +67,11 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     login: NexusGenRootTypes['AuthRes'] | null; // AuthRes
+    logout: boolean | null; // Boolean
     signup: NexusGenRootTypes['AuthRes'] | null; // AuthRes
   }
   Query: { // field return type
+    me: NexusGenRootTypes['User'] | null; // User
     users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   User: { // field return type
@@ -88,9 +90,11 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     login: 'AuthRes'
+    logout: 'Boolean'
     signup: 'AuthRes'
   }
   Query: { // field return type name
+    me: 'User'
     users: 'User'
   }
   User: { // field return type name

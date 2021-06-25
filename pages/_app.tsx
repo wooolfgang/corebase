@@ -1,26 +1,22 @@
 import 'app/styles/globals.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { GraphqlClientProvider } from 'src/app/context/GraphqlClient'
-import { GraphQLClient } from 'graphql-request'
+import queryClient from 'app/lib/queryClient'
+import graphqlClient from 'app/lib/graphqlClient'
+import { store } from 'src/app/store/graphql'
 
 type Properties = {
   Component: any
   pageProps: any
 }
 
-const queryClient = new QueryClient()
-const graphqlClient = new GraphQLClient('/api/graphql', {
-  headers: {}
-})
+store.setState({ client: graphqlClient })
 
 function App({ Component, pageProps }: Properties) {
   return (
     <QueryClientProvider client={queryClient}>
-      <GraphqlClientProvider client={graphqlClient}>
-        <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-      </GraphqlClientProvider>
+      <Component {...pageProps} />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   )
 }

@@ -2,15 +2,26 @@ import React from 'react'
 import { Form, Field } from 'react-final-form'
 import { NexusGenArgTypes } from 'generated/nexus-typegen'
 import { useMutation, useQueryClient } from 'react-query'
-import { gql } from 'graphql-request'
-import { useGraphqlClient } from 'app/context/GraphqlClient'
+import { gql, GraphQLClient } from 'graphql-request'
+import { useGraphqlClient } from 'app/hooks/useGraphqlClient'
 import Input from 'app/components/Input'
+import { useStore } from '../store/auth'
 
-const CreateUserMutation = gql`
-  mutation createUser($email: String!, $firstName: String, $lastName: String) {
-    signup(email: $email, firstName: $firstName, lastName: $lastName) {
+const SignupMutation = gql`
+  mutation signup(
+    $email: String!
+    $firstName: String
+    $lastName: String
+    $password: String!
+  ) {
+    signup(
+      email: $email
+      firstName: $firstName
+      lastName: $lastName
+      password: $password
+    ) {
       id
-      email
+      accessToken
     }
   }
 `
@@ -21,15 +32,16 @@ interface Props {
 
 const RegisterUserForm: React.FC<Props> = ({ className }) => {
   const queryClient = useQueryClient()
-  const gqlClient = useGraphqlClient()
+  const gqlClient = useGraphqlClient() as GraphQLClient
+  const { setAccessToken } = useStore()
 
   function handleSubmit(values: NexusGenArgTypes['Mutation']['signup']) {
-    createUserMutation.mutate(values)
+    signup(values)
   }
 
-  const createUserMutation = useMutation(
+  const { mutate: signup, isLoading } = useMutation(
     async (values: NexusGenArgTypes['Mutation']['signup']) => {
-      return await gqlClient.request(CreateUserMutation, values)
+      return await gqlClient.request(SignupMutation, values)
     },
     {
       onMutate: async newUser => {
@@ -43,8 +55,8 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
       onError: (_err, _variables, previousValue): void => {
         queryClient.setQueryData('users', previousValue)
       },
-      onSuccess: () => {
-        alert('created!')
+      onSuccess: data => {
+        setAccessToken(data.signup.accessToken)
       },
       onSettled: (): void => {
         queryClient.invalidateQueries('users')
@@ -93,9 +105,10 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
           <div className="flex flex-col items-end mt-4">
             <button
               type="submit"
+              disabled={isLoading}
               className="font-serif px-2 py-1 text-white text-base font-medium text-right border-b-2 border-r-2 border-solid border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
             >
-              Create your account
+              {isLoading ? 'Creating...' : 'Create your account'}
             </button>
           </div>
         </form>

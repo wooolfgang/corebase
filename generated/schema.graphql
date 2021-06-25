@@ -10,10 +10,12 @@ type AuthRes {
 
 type Mutation {
   login(email: String!, password: String!): AuthRes
+  logout: Boolean
   signup(email: String!, firstName: String, lastName: String, password: String!): AuthRes
 }
 
 type Query {
+  me: User
   users: [User]
 }
 

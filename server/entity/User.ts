@@ -27,10 +27,19 @@ export const UserQuery = extendType({
     t.list.field('users', {
       type: 'User',
       authorize: (_, __, ctx) => {
-        return ctx.auth!.isAuthenticated()
+        return ctx.auth!.isAuthenticated(ctx)
       },
       resolve(_root, _args, ctx) {
         return ctx.prisma.user.findMany()
+      }
+    })
+    t.field('me', {
+      type: 'User',
+      authorize: (_, __, ctx) => {
+        return ctx.auth!.isAuthenticated(ctx)
+      },
+      resolve(_, __, ctx) {
+        return ctx.prisma.user.findUnique({ where: { id: ctx.userId } })
       }
     })
   }
@@ -118,6 +127,13 @@ export const UserMutation = extendType({
             email: user.email,
             id: user.id
           }
+        }
+      }),
+      t.field('logout', {
+        type: 'Boolean',
+        async resolve(_, __, ctx) {
+          sendRefreshToken('', ctx.res!)
+          return Promise.resolve(true)
         }
       })
   }
