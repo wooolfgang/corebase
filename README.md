@@ -3,6 +3,12 @@
 - npx create-next-app {project-name} --use-npm -e with-typescript
 - npm add nexus && npm add graphql (https://nexusjs.org/docs/#installation)
 
+| Command         | Action                                      |
+| :-------------- | :------------------------------------------ |
+| `npm install`   | Installs dependencies                       |
+| `npm run start` | Starts local dev server at `localhost:3000` |
+| `npm run build` | Build your production site to `./dist/`     |
+
 ### Setting up the backend
 
 1. cd db && run docker-compose up -d
