@@ -41,7 +41,7 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
     signup(values)
   }
 
-  const { mutate: signup, isLoading } = useMutation(
+  const { mutate: signup, isLoading, error } = useMutation(
     async (values: NexusGenArgTypes['Mutation']['signup']) => {
       return await gqlClient.request(SignupMutation, values)
     },
@@ -56,6 +56,23 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
   return (
     <Form
       onSubmit={handleSubmit}
+      validate={values => {
+        const errors: {
+          email?: string
+          password?: string
+        } = {}
+
+        if (!values.email) {
+          errors.email = 'Please input your email'
+        }
+        if (values.email && !values.email.includes('@')) {
+          errors.email = 'Please input a valid email'
+        }
+        if (!values.password) {
+          errors.password = 'Please input your password'
+        }
+        return errors
+      }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit} className={className}>
           <Field
@@ -64,32 +81,39 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
             type="email"
             autoComplete="email"
             required
-            render={({ input }) => (
-              <Input label={`Email address:`} {...input} />
+            render={({ input, meta }) => (
+              <Input
+                label={`Email address:`}
+                error={meta.touched && meta.error}
+                {...input}
+              />
             )}
           />
-
-          <Field
-            name="firstName"
-            id="firstName"
-            required
-            render={({ input }) => <Input label={`First name:`} {...input} />}
-          />
-
-          <Field
-            name="lastName"
-            id="lastName"
-            required
-            render={({ input }) => <Input label={`Last name:`} {...input} />}
-          />
-
           <Field
             id="password"
             name="password"
             type="password"
             autoComplete="current-password"
             required
-            render={({ input }) => <Input label={`Password:`} {...input} />}
+            render={({ input, meta }) => (
+              <Input
+                label={`Password:`}
+                error={meta.touched && meta.error}
+                {...input}
+              />
+            )}
+          />
+          <Field
+            name="firstName"
+            id="firstName"
+            required
+            render={({ input }) => <Input label={`First name:`} {...input} />}
+          />
+          <Field
+            name="lastName"
+            id="lastName"
+            required
+            render={({ input }) => <Input label={`Last name:`} {...input} />}
           />
           <div className="flex flex-col items-end mt-4">
             <Button
@@ -99,6 +123,11 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
             >
               {isLoading ? 'Creating...' : 'Create your account'}
             </Button>
+            {error && (
+              <span className="text-sm text-red-600 mt-1">
+                {(error as any).response.errors[0].message}
+              </span>
+            )}
           </div>
         </form>
       )}

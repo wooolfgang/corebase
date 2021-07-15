@@ -29,7 +29,7 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
     login(values)
   }
 
-  const { mutate: login, isLoading } = useMutation(
+  const { mutate: login, isLoading, error } = useMutation(
     async (values: NexusGenArgTypes['Mutation']['login']) => {
       return graphqlClient.request(LoginMutation, values)
     },
@@ -43,6 +43,22 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
   return (
     <Form
       onSubmit={handleLogin}
+      validate={values => {
+        const errors: {
+          email?: string
+          password?: string
+        } = {}
+        if (!values.email) {
+          errors.email = 'Your email is required'
+        }
+        if (values.email && !values.email.includes('@')) {
+          errors.email = 'Please input a valid email'
+        }
+        if (!values.password) {
+          errors.password = 'Your password is not valid'
+        }
+        return errors
+      }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit} className={className}>
           <Field
@@ -51,8 +67,12 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
             type="email"
             autoComplete="email"
             required
-            render={({ input }) => (
-              <Input label={`Email address:`} {...input} />
+            render={({ input, meta }) => (
+              <Input
+                label={`Email address:`}
+                {...input}
+                error={meta.touched && meta.error}
+              />
             )}
           />
 
@@ -62,12 +82,23 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
             type="password"
             autoComplete="current-password"
             required
-            render={({ input }) => <Input label={`Password:`} {...input} />}
+            render={({ input, meta }) => (
+              <Input
+                label={`Password:`}
+                error={meta.touched && meta.error}
+                {...input}
+              />
+            )}
           />
           <div className="flex flex-col items-end mt-4">
             <Button type="submit" disabled={isLoading}>
               {isLoading ? 'Logging in...' : 'Login your account'}
             </Button>
+            {error && (
+              <span className="text-sm text-red-600 mt-1">
+                Incorrect username or password
+              </span>
+            )}
           </div>
         </form>
       )}
