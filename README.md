@@ -27,8 +27,8 @@ Technologies:
 Run these commands in ascending order. (_Please make sure [npx](https://www.npmjs.com/package/npx) is installed_)
 
 1. `cp .env.example .env`
-2. `cd db && docker-compose up -d`
-3. `cd .. && npx prisma migrate dev` (or run the command from root dir)
+2. `cd db && docker-compose up -d && cd ..`
+3. `npx prisma migrate dev`
 
 ### Getting started
 
