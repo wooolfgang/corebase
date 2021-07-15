@@ -1,12 +1,13 @@
 # Corebase
 
-Corebase is a graphql-first template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with typescript. It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers wonderful DX. Lastly, eslint and prettier defaults are initialized in order for you to be productively coding right off the bat!
+Corebase is a graphql-first code template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with [Typescript](typescriptlang.org). It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers wonderful DX. Lastly, [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) defaults are initialized in order for you to be productively coding right off the bat!
 
 ### Requirements
 
 - [Node.js 12.0](https://nodejs.org/en/) or later
+- [Postgres 12.0](https://www.postgresql.org/) or later
 - [Docker](https://www.docker.com/)
-- [Postgres 12.0 or higher](https://www.postgresql.org/)
+- [Npx](https://www.npmjs.com/package/npx)
 
 ### Setting up the backend
 
@@ -34,7 +35,7 @@ Corebase is a graphql-first template to bootstrap development of web application
 - https://dev.to/prisma/complete-introduction-to-fullstack-type-safe-graphql-feat-next-js-nexus-prisma-c5
 - https://medium.com/dooboolab/how-to-set-up-a-graphql-server-with-apollo-server-prisma2-and-nexus-schema-f59aa23b5d5d
 - https://zach.codes/nexus-prisma-is-the-future-of-backend/
-- Adding Eslint-Prettier https://telmo.is/writing/add-prettier-and-eslint-to-your-nextjs-app
+- https://telmo.is/writing/add-prettier-and-eslint-to-your-nextjs-app
 
 #### Prisma
 
