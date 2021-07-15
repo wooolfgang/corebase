@@ -9,10 +9,13 @@ Corebase is a graphql-first code template to bootstrap development of web applic
 - [Docker](https://www.docker.com/)
 - [Npx](https://www.npmjs.com/package/npx)
 
-### Setting up the backend
+### Initializing the project
 
-1. cd db && run docker-compose up -d
-2. Run the initial migration: `npx prisma migrate dev`
+Run these commands in ascending order.
+
+1. `cp .env.example .env`
+2. `cd db && docker-compose up -d`
+3. `cd .. && npx prisma migrate dev` (or run the command from root dir)
 
 ### Getting started
 
@@ -28,6 +31,14 @@ Corebase is a graphql-first code template to bootstrap development of web applic
   cd prisma
   npx prisma studio
 ```
+
+### Documentation
+
+For advanced documentation, please refer to the following
+
+- NextJS => https://nextjs.org/
+- Prisma => https://www.prisma.io/
+- TailwindCSS => https://tailwindcss.com/
 
 ### References:
 
