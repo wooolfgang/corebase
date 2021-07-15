@@ -11,7 +11,7 @@ Corebase is a graphql-first code template to bootstrap development of web applic
 
 ## Initializing the project
 
-Run these commands in ascending order.
+Run these commands in ascending order. (_Please make sure [Npx](https://www.npmjs.com/package/npx) is installed_)
 
 1. `cp .env.example .env`
 2. `cd db && docker-compose up -d`
