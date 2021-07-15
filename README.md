@@ -24,7 +24,7 @@ Technologies:
 
 ## Initializing the project
 
-Run these commands in ascending order. (_Please make sure [Npx](https://www.npmjs.com/package/npx) is installed_)
+Run these commands in ascending order. (_Please make sure [npx](https://www.npmjs.com/package/npx) is installed_)
 
 1. `cp .env.example .env`
 2. `cd db && docker-compose up -d`
