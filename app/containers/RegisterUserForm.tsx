@@ -1,11 +1,13 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
 import { NexusGenArgTypes } from 'generated/nexus-typegen'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { gql, GraphQLClient } from 'graphql-request'
 import { useGraphqlClient } from 'app/hooks/useGraphqlClient'
 import Input from 'app/components/Input'
-import { useStore } from '../store/auth'
+import Button from 'app/components/Button'
+import { useStore } from 'app/store/auth'
+import { useRouter } from 'next/router'
 
 const SignupMutation = gql`
   mutation signup(
@@ -31,7 +33,7 @@ interface Props {
 }
 
 const RegisterUserForm: React.FC<Props> = ({ className }) => {
-  const queryClient = useQueryClient()
+  const router = useRouter()
   const gqlClient = useGraphqlClient() as GraphQLClient
   const { setAccessToken } = useStore()
 
@@ -44,22 +46,9 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
       return await gqlClient.request(SignupMutation, values)
     },
     {
-      onMutate: async newUser => {
-        await queryClient.cancelQueries('users')
-        const previousValue = queryClient.getQueryData('users')
-        queryClient.setQueryData('users', (oldUsers: any) => {
-          return oldUsers ? [...oldUsers, newUser] : [newUser]
-        })
-        return previousValue
-      },
-      onError: (_err, _variables, previousValue): void => {
-        queryClient.setQueryData('users', previousValue)
-      },
       onSuccess: data => {
         setAccessToken(data.signup.accessToken)
-      },
-      onSettled: (): void => {
-        queryClient.invalidateQueries('users')
+        router.push('/')
       }
     }
   )
@@ -103,13 +92,13 @@ const RegisterUserForm: React.FC<Props> = ({ className }) => {
             render={({ input }) => <Input label={`Password:`} {...input} />}
           />
           <div className="flex flex-col items-end mt-4">
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
               className="font-serif px-2 py-1 text-white text-base font-medium text-right border-b-2 border-r-2 border-solid border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
             >
               {isLoading ? 'Creating...' : 'Create your account'}
-            </button>
+            </Button>
           </div>
         </form>
       )}

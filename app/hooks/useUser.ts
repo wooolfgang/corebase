@@ -31,7 +31,7 @@ interface InitialProps {
   user?: NexusGenObjects['User']
 }
 
-const useUser = (props?: InitialProps): UserPayload => {
+export const useUser = (props?: InitialProps): UserPayload => {
   const { accessToken, user, setUser } = useStore(
     state => ({
       accessToken: state.accessToken,

@@ -6,6 +6,7 @@ import { useMutation } from 'react-query'
 import { gql } from 'graphql-request'
 import { NexusGenArgTypes } from 'generated/nexus-typegen'
 import { useStore } from 'app/store/auth'
+import Button from 'app/components/Button'
 
 const LoginMutation = gql`
   mutation login($email: String!, $password: String!) {
@@ -64,13 +65,9 @@ const LoginUserForm: React.FC<Props> = ({ className }) => {
             render={({ input }) => <Input label={`Password:`} {...input} />}
           />
           <div className="flex flex-col items-end mt-4">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="font-serif px-2 py-1 text-white text-base font-medium text-right border-b-2 border-r-2 border-blue-600 bg-blue-500 focus:outline-none focus:ring-2 focus:border-blue-800 "
-            >
+            <Button type="submit" disabled={isLoading}>
               {isLoading ? 'Logging in...' : 'Login your account'}
-            </button>
+            </Button>
           </div>
         </form>
       )}

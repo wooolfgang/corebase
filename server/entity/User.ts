@@ -24,15 +24,16 @@ export const AuthRes = objectType({
 export const UserQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.list.field('users', {
-      type: 'User',
+    t.crud.users({
       authorize: (_, __, ctx) => {
         return ctx.auth!.isAuthenticated(ctx)
-      },
-      resolve(_root, _args, ctx) {
-        return ctx.prisma.user.findMany()
       }
-    })
+    }),
+      t.crud.user({
+        authorize: (_, __, ctx) => {
+          return ctx.auth!.isAuthenticated(ctx)
+        }
+      })
     t.field('me', {
       type: 'User',
       authorize: (_, __, ctx) => {

@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { useGraphqlClient } from 'app/hooks/useGraphqlClient'
 import { gql } from 'graphql-request'
 import { useStore } from 'app/store/auth'
+import noop from 'app/lib/noop'
 
 const LogoutMutation = gql`
   mutation {
@@ -9,7 +10,8 @@ const LogoutMutation = gql`
   }
 `
 
-const useLogout = () => {
+export const useLogout = (params?: { onSuccess: () => void }) => {
+  const { onSuccess = noop } = params || { onSuccess: noop }
   const queryClient = useQueryClient()
   const gqlClient = useGraphqlClient()
   const revokeAuth = useStore(state => state.revokeAuth)
@@ -20,6 +22,7 @@ const useLogout = () => {
       onSuccess: () => {
         queryClient.clear()
         revokeAuth()
+        onSuccess()
       }
     }
   )

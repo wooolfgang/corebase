@@ -6,6 +6,7 @@ interface Props {
   user?: NexusGenObjects['User']
   isSkeleton?: boolean
   handleLogout?: () => void
+  isLoggingOut?: boolean
 }
 
 const linkClassname = `text-base text-blue-700 underline mr-1.5 font-serif `
@@ -14,30 +15,39 @@ const Nav: React.FC<Props> = ({
   className,
   user,
   isSkeleton,
-  handleLogout
+  handleLogout,
+  isLoggingOut
 }) => {
   return (
-    <header className={className}>
-      {isSkeleton ? (
-        <>
-          <span>Welcome, </span>
-          <Link href="/register" className={linkClassname}>
-            Register
+    <nav className={`${className} w-full`}>
+      {user ? (
+        <div className={`w-full flex justify-between items-center`}>
+          <Link href="/" className={`${linkClassname} font-serif italic`}>
+            {user.email}
           </Link>
-          <button className={linkClassname} onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      ) : user ? (
-        <>
-          <span>Welcome, {user.email}</span>
-          <Link href="/register" className={linkClassname}>
-            Register
-          </Link>
-          <button className={linkClassname} onClick={handleLogout}>
-            Logout
-          </button>
-        </>
+          <div className="flex items-center">
+            {' '}
+            <Link href="/users" className={linkClassname}>
+              Users
+            </Link>
+            <button className={linkClassname} onClick={handleLogout}>
+              {isLoggingOut ? 'Logging out...' : 'Logout'}
+            </button>
+          </div>
+        </div>
+      ) : isSkeleton ? (
+        <div className={`w-full flex justify-between`}>
+          <span className="rounded-full border-2 border-solid border-blue-500 w-8 h-8 flex items-center justify-center text-lg font-serif italic"></span>
+          <div className="flex items-center">
+            {' '}
+            <Link href="/users" className={linkClassname}>
+              Users
+            </Link>
+            <button className={linkClassname} disabled>
+              Logout
+            </button>
+          </div>
+        </div>
       ) : (
         <>
           <Link href="/" className={linkClassname}>
@@ -48,7 +58,7 @@ const Nav: React.FC<Props> = ({
           </Link>
         </>
       )}
-    </header>
+    </nav>
   )
 }
 

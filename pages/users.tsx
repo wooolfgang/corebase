@@ -1,12 +1,13 @@
 import React from 'react'
-import Nav from 'src/app/components/Nav'
-import LoginUserForm from 'src/app/containers/LoginUserForm'
+import Nav from 'app/components/Nav'
+import UserList from 'app/containers/UserList'
 import Layout from 'app/components/Layout'
-import useUser from 'src/app/hooks/useUser'
 import { getAccessTokenFromRefreshToken } from 'pages/api/refresh_token'
-import skipOnClientSideNav from 'src/app/lib/skipOnClientSideNav'
 import { GetServerSidePropsContext } from 'next'
-import useLogout from 'src/app/hooks/useLogout'
+import skipOnClientSideNav from 'app/lib/skipOnClientSideNav'
+import useLogout from 'app/hooks/useLogout'
+import useUser from 'app/hooks/useUser'
+import { useRouter } from 'next/router'
 
 async function getProps(ctx: GetServerSidePropsContext) {
   const refreshToken = ctx.req.cookies.rt
@@ -22,9 +23,15 @@ interface Props {
   accessToken?: string
 }
 
-const Index: React.FC<Props> = props => {
+const Users: React.FC<Props> = props => {
+  const router = useRouter()
   const { isPossiblyLoggedIn, user } = useUser(props)
-  const { handleLogout, isLoading } = useLogout()
+
+  const logoutRedirect = () => {
+    router.push('/')
+  }
+
+  const { handleLogout, isLoading } = useLogout({ onSuccess: logoutRedirect })
   return (
     <Layout title="">
       <div className="flex items-center justify-center w-full flex-col pt-32">
@@ -36,21 +43,11 @@ const Index: React.FC<Props> = props => {
             isLoggingOut={isLoading}
             isSkeleton={isPossiblyLoggedIn}
           />
-          {user ? (
-            <p>
-              Welcome, {user.firstName} {user.lastName}
-            </p>
-          ) : isPossiblyLoggedIn ? (
-            <div>
-              <p> Welcome, ...</p>
-            </div>
-          ) : (
-            <LoginUserForm className="w-full" />
-          )}
+          <UserList />
         </div>
       </div>
     </Layout>
   )
 }
 
-export default Index
+export default Users
