@@ -2,6 +2,19 @@
 
 Corebase is a graphql-first code template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with [Typescript](typescriptlang.org). It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers wonderful DX. Lastly, [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) defaults are initialized in order for you to be productively coding right off the bat!
 
+Technologies:
+
+- [NextJS](https://nextjs.org/) (React Framework
+  for Production)
+- [Prisma](https://www.prisma.io/) (Next-generation
+  Node.js and TypeScript
+  ORM)
+- [TailwindCSS](https://tailwindcss.com/) ( Utility-first CSS framework packed)
+- [Typescript](typescriptlang.org) (Typed JavaScript at Any Scale)
+- [Nexus](https://nexusjs.org/) ( Declarative, Code-First GraphQL Schemas for JavaScript/TypeScript)
+
+---
+
 ## Requirements
 
 - [Node.js 12.0](https://nodejs.org/en/) or later
@@ -45,9 +58,10 @@ Run these commands in ascending order. (_Please make sure [Npx](https://www.npmj
 
 For advanced documentation, please refer to the following
 
-- NextJS => https://nextjs.org/
-- Prisma => https://www.prisma.io/
-- TailwindCSS => https://tailwindcss.com/
+- NextJS -> https://nextjs.org/
+- Prisma -> https://www.prisma.io/
+- TailwindCSS -> https://tailwindcss.com/
+- NexusJS -> https://nexusjs.org/
 
 ## References:
 
