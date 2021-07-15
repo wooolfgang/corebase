@@ -2,14 +2,14 @@
 
 Corebase is a graphql-first code template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with [Typescript](typescriptlang.org). It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers wonderful DX. Lastly, [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) defaults are initialized in order for you to be productively coding right off the bat!
 
-### Requirements
+## Requirements
 
 - [Node.js 12.0](https://nodejs.org/en/) or later
 - [Postgres 12.0](https://www.postgresql.org/) or later
 - [Docker](https://www.docker.com/)
 - [Npx](https://www.npmjs.com/package/npx)
 
-### Initializing the project
+## Initializing the project
 
 Run these commands in ascending order.
 
@@ -19,20 +19,29 @@ Run these commands in ascending order.
 
 ### Getting started
 
-| Command         | Action                                      |
-| :-------------- | :------------------------------------------ |
-| `npm install`   | Installs dependencies                       |
-| `npm run start` | Starts local dev server at `localhost:3000` |
-| `npm run build` | Build your production site to `./dist/`     |
+| Command       | Action                                      |
+| :------------ | :------------------------------------------ |
+| `npm install` | Installs dependencies                       |
+| `npm run dev` | Starts local dev server at `localhost:3000` |
+| `npm run db`  | Runs your db docker image container         |
 
-### Using [Prisma Studio](https://www.prisma.io/studio)
+## Project Structure
 
-```
-  cd prisma
-  npx prisma studio
-```
+| Codebase      |                    Description                    |
+| :------------ | :-----------------------------------------------: |
+| /app          |                     Frontend                      |
+| /db           |               Postgres Docker Image               |
+| /generated    | Generated Graphql Schema & Typescript Definitions |
+| /pages/api/\* |                    NextJS API                     |
+| /pages/\*     |                NextJS Page Routes                 |
+| /prisma       |                      Prisma                       |
+| /server       |                  Graphql Server                   |
 
-### Documentation
+## Using [Prisma Studio](https://www.prisma.io/studio)
+
+`cd prisma && npx prisma studio`
+
+## Documentation
 
 For advanced documentation, please refer to the following
 
@@ -40,7 +49,7 @@ For advanced documentation, please refer to the following
 - Prisma => https://www.prisma.io/
 - TailwindCSS => https://tailwindcss.com/
 
-### References:
+## References:
 
 - https://egghead.io/lessons/postgresql-set-up-and-run-a-postgresql-instance-locally-with-docker-compose?pl=build-a-full-stack-app-with-prisma-2-7c81
 - https://dev.to/prisma/complete-introduction-to-fullstack-type-safe-graphql-feat-next-js-nexus-prisma-c5
@@ -48,12 +57,12 @@ For advanced documentation, please refer to the following
 - https://zach.codes/nexus-prisma-is-the-future-of-backend/
 - https://telmo.is/writing/add-prettier-and-eslint-to-your-nextjs-app
 
-#### Prisma
+### Prisma
 
 - https://github.com/catalinmiron/awesome-prisma
 - https://github.com/prisma/prisma-examples
 
-#### Authentication
+### Authentication
 
 - https://www.youtube.com/watch?v=25GS0MLT8JU
 - https://github.com/benawad/jwt-auth-example
