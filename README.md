@@ -32,11 +32,11 @@ Run these commands in ascending order. (_Please make sure [npx](https://www.npmj
 
 ### Getting started
 
-| Command       | Action                                      |
-| :------------ | :------------------------------------------ |
-| `npm install` | Installs dependencies                       |
-| `npm run dev` | Starts local dev server at `localhost:3000` |
-| `npm run db`  | Runs your db docker image container         |
+| Command       | Action                                         |
+| :------------ | :--------------------------------------------- |
+| `npm install` | Installs dependencies                          |
+| `npm run db`  | Runs your postgres docker image (db container) |
+| `npm run dev` | Starts local dev server at `localhost:3000`    |
 
 ## Project Structure
 
