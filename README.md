@@ -28,7 +28,7 @@ Run these commands in ascending order. (_Please make sure [npx](https://www.npmj
 
 1. `cp .env.example .env`
 2. `cd db && docker-compose up -d && cd ..`
-3. `npx prisma migrate dev` (run `docker-compose up` before if prisma migration fails)
+3. `npx prisma migrate dev` (re-run `cd db && docker-compose up -d && cd ..` before if prisma migration fails)
 
 ### Getting started
 
