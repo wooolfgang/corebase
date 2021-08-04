@@ -1,6 +1,6 @@
 # Corebase
 
-Corebase is a graphql-first code template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with [Typescript](typescriptlang.org). It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers wonderful DX. Lastly, [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) defaults are initialized in order for you to be productively coding right off the bat!
+Corebase is a graphql-first code template to bootstrap development of web applications. It scaffolds type definitions using [Nexus](https://nexusjs.org/) that allows you to create fully-typed applications from back-to-front with [Typescript](typescriptlang.org). It comes with a default authentication implementation, and uses modern technologies such as [NextJS](https://nextjs.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/) which offers pleasant developer experience. Lastly, [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) defaults are initialized in order for you to be productively coding right off the bat!
 
 Technologies:
 
@@ -28,7 +28,7 @@ Run these commands in ascending order. (_Please make sure [npx](https://www.npmj
 
 1. `cp .env.example .env`
 2. `cd db && docker-compose up -d && cd ..`
-3. `npx prisma migrate dev`
+3. `npx prisma migrate dev` (re-run `cd db && docker-compose up -d && cd ..` before if prisma migration fails)
 
 ### Getting started
 
