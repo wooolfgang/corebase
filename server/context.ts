@@ -18,5 +18,5 @@ export const createContext = (
   req,
   res,
   prisma,
-  auth: Auth(req, res, prisma)
+  auth: new Auth({ req, prisma })
 })
