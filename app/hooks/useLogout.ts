@@ -21,6 +21,7 @@ export const useLogout = (params?: { onSuccess: () => void }) => {
     {
       onSuccess: () => {
         queryClient.clear()
+        localStorage.clear()
         revokeAuth()
         onSuccess()
       }
